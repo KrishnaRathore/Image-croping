@@ -1,0 +1,17 @@
+<form role="form" #myForm="ngForm" accept-charset="UTF-8" novalidate>
+    <div class="form-group has-feedback"  style="height: 500px;"
+          [ngClass]="{ 'has-error': myckeditor.invalid && myckeditor.touched }">
+        <ckeditor [(ngModel)]="mycontent" 
+                #myckeditor="ngModel"
+                name="myckeditor"
+                required
+                [config]="ckeConfig" 
+                debounce="500" 
+                (paste)="onPaste($event)"
+                (change)="onChange($event)">
+        </ckeditor>
+      
+    </div>
+    <button [disabled]="myForm.invalid" (click)="saveTemplate()" class="btn btn-primary mt-4">Save</button>
+    </form>
+    <!-- <pre>{{mycontent}}</pre> -->
